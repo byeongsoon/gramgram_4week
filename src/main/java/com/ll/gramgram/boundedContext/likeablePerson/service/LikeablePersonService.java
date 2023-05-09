@@ -226,4 +226,11 @@ public class LikeablePersonService {
             .filter(p -> p.getFromInstaMember().getGender().equals(gender))
             .collect(Collectors.toList());
     }
+
+    public List<LikeablePerson> getAttractiveTypeCodeFiltering(final List<LikeablePerson> likeablePeople, final Integer attractiveTypeCode) {
+        return likeablePeople.stream()
+            .filter(p -> p.getAttractiveTypeCode() == attractiveTypeCode)
+            .collect(Collectors.toList());
+    }
+
 }

@@ -126,7 +126,7 @@ public class LikeablePersonController {
     public String showToList(
         Model model,
         @RequestParam(required = false) String gender,
-        @RequestParam(required = false) Integer attractiveTypeCode,
+        @RequestParam(required = false, defaultValue = "0") Integer attractiveTypeCode,
         @RequestParam(required = false) Integer sortCode
     ) {
         InstaMember instaMember = rq.getMember().getInstaMember();
@@ -136,6 +136,10 @@ public class LikeablePersonController {
 
             if (gender != null && !gender.isEmpty()) {
                 likeablePeople = likeablePersonService.getGenderFiltering(likeablePeople, gender);
+            }
+
+            if (attractiveTypeCode != null && attractiveTypeCode != 0) {
+                likeablePeople = likeablePersonService.getAttractiveTypeCodeFiltering(likeablePeople, attractiveTypeCode);
             }
 
             model.addAttribute("likeablePeople", likeablePeople);
