@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -125,9 +126,9 @@ public class LikeablePersonController {
     @GetMapping("/toList")
     public String showToList(
         Model model,
-        @RequestParam(required = false) String gender,
-        @RequestParam(required = false, defaultValue = "0") Integer attractiveTypeCode,
-        @RequestParam(required = false) Integer sortCode
+        String gender,
+        @RequestParam(defaultValue = "0") Integer attractiveTypeCode,
+        @RequestParam(defaultValue = "1") Integer sortCode
     ) {
         InstaMember instaMember = rq.getMember().getInstaMember();
 
