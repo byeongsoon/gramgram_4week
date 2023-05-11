@@ -44,6 +44,13 @@ public class NotProd {
                 instaMemberService.connect(memberUser4, "insta_user4", "M");
                 instaMemberService.connect(memberUser5, "insta_user5", "W");
 
+                // 성별 필터링용 테스트
+                instaMemberService.connect(memberUser6ByKakao, "byeongsoon94", "M");
+                likeablePersonService.like(memberUser2, "byeongsoon94",1);
+                likeablePersonService.like(memberUser3, "byeongsoon94",2);
+                likeablePersonService.like(memberUser4, "byeongsoon94",3);
+                likeablePersonService.like(memberUser5, "byeongsoon94",2);
+
                 // 원활한 테스트와 개발을 위해서 자동으로 만들어지는 호감이 삭제, 수정이 가능하도록 쿨타임해제
                 LikeablePerson likeablePersonToinstaUser4 = likeablePersonService.like(memberUser3, "insta_user4", 1).getData();
                 Ut.reflection.setFieldValue(likeablePersonToinstaUser4, "modifyUnlockDate", LocalDateTime.now().minusSeconds(1));
